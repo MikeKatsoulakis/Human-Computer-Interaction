@@ -31,7 +31,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     private void InitializeViewModel()
     {
-        ApplicationTitle = "WPF UI - HumanComputerInteraction.DesktopUI";
+        ApplicationTitle = "Human-Computer Interaction";
 
         NavigationItems = new ObservableCollection<INavigationControl>
         {
@@ -41,6 +41,27 @@ public partial class MainWindowViewModel : ObservableObject
                 PageTag = "dashboard",
                 Icon = SymbolRegular.Home24,
                 PageType = typeof(Views.Pages.DashboardPage)
+            },
+            new NavigationItem()
+            {
+                Content = "Shopping List",
+                PageTag = "shoppingList",
+                Icon = SymbolRegular.Cart24,
+                PageType = typeof(Views.Pages.ShoppingListPage)
+            },
+            new NavigationItem()
+            {
+                Content = "Contacts List",
+                PageTag = "contacts",
+                Icon = SymbolRegular.ContactCard24,
+                PageType = typeof(Views.Pages.ContactsPage)
+            },
+            new NavigationItem()
+            {
+                Content = "ToDo List",
+                PageTag = "todoList",
+                Icon = SymbolRegular.TaskListLtr24,
+                PageType = typeof(Views.Pages.ToDoListPage)
             }
         };
 

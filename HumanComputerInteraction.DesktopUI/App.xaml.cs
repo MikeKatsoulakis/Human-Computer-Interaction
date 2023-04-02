@@ -11,9 +11,7 @@ using Wpf.Ui.Mvvm.Contracts;
 using Wpf.Ui.Mvvm.Services;
 
 namespace HumanComputerInteraction.DesktopUI;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
+
 public partial class App
 {
     // The.NET Generic Host provides dependency injection, configuration, logging, and other services.
@@ -48,8 +46,18 @@ public partial class App
             // Views and ViewModels
             services.AddScoped<Views.Pages.DashboardPage>();
             services.AddScoped<ViewModels.DashboardViewModel>();
+
             services.AddScoped<Views.Pages.SettingsPage>();
             services.AddScoped<ViewModels.SettingsViewModel>();
+
+            services.AddScoped<Views.Pages.ShoppingListPage>();
+            services.AddScoped<ViewModels.ShoppingListViewModel>();
+
+            services.AddScoped<Views.Pages.ContactsPage>();
+            services.AddScoped<ViewModels.ContactsViewModel>();
+
+            services.AddScoped<Views.Pages.ToDoListPage>();
+            services.AddScoped<ViewModels.ToDoListViewModel>();
 
             // Configuration
             services.Configure<AppConfig>(context.Configuration.GetSection(nameof(AppConfig)));
