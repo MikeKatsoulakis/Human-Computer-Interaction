@@ -15,6 +15,13 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid />
+    <StackPanel Margin="10px">
+        <TextBlock Text="{Binding ViewModel.ShoppingName}" FontWeight="Normal"/>
+        <TextBlock Text="MOUNAKIA" FontWeight="Normal"/>
+        <Button Content="Allagh Fulou" Command="{Binding ViewModel.UpdateShoppingListCommand, Mode=OneWay}"></Button>
+        
+          
+
+    </StackPanel>
 
 </ui:UiPage>
