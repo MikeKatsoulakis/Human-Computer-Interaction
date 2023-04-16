@@ -73,7 +73,7 @@
         </StackPanel>
 
 
-        <ListBox
+        <ListView
             Grid.Row="2"
             Grid.Column="0"
             Width="200"
@@ -91,7 +91,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
-        </ListBox>
+        </ListView>
 
     </Grid>
 

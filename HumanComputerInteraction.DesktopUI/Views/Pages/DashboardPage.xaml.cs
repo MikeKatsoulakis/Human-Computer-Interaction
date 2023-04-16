@@ -28,8 +28,8 @@ public partial class DashboardPage : INavigableView<ViewModels.DashboardViewMode
 
             //23153425325sdfsf34
 
-            if (contact.Name != "" && 
-                contact.PhoneNo != "" && 
+            if (contact.Name != "" &&
+                contact.PhoneNo != "" &&
                 int.TryParse(contact.PhoneNo, out _))
             {
                 ViewModel.TestList.Add(contact);

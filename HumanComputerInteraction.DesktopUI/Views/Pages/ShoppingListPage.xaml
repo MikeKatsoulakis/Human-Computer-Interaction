@@ -5,23 +5,113 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:HumanComputerInteraction.DesktopUI.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
+    Title="ShoppingList"
     d:Background="{DynamicResource ApplicationBackgroundBrush}"
-    d:DataContext="{d:DesignInstance local:DashboardPage,
+    d:DataContext="{d:DesignInstance local:ShoppingListPage,
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
+    <Grid RenderTransformOrigin="0.502,0.5" ShowGridLines="True">
 
-    <StackPanel Margin="10px">
-        <TextBlock Text="{Binding ViewModel.ShoppingName}" FontWeight="Normal"/>
-        <TextBlock Text="MOUNAKIA" FontWeight="Normal"/>
-        <Button Content="Allagh Fulou" Command="{Binding ViewModel.UpdateShoppingListCommand, Mode=OneWay}"></Button>
-        
-          
 
-    </StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="59*" />
+            <ColumnDefinition Width="41*" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel
+            Grid.Column="1"
+            Width="400"
+            Height="35"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Orientation="Horizontal">
+
+
+            <TextBox
+                Name="ItemName"
+                Width="200"
+                Margin="0,0,10,0"
+                FontWeight="Normal"
+                KeyUp="TextBox_KeyUp"
+                Text="{Binding ViewModel.ItemName, UpdateSourceTrigger=PropertyChanged}" />
+
+            <ui:NumberBox
+                Name="ItemCount"
+                Width="auto"
+                Margin="0,0,20,0"
+                ClearButtonEnabled="False"
+                FontWeight="Normal"
+                IntegersOnly="True"
+                Min="1"
+                SpinButtonsEnabled="True"
+                Value="{Binding ViewModel.ItemCount, UpdateSourceTrigger=PropertyChanged}" />
+
+
+            <Button
+                Click="Save_Item"
+                Command="{Binding ViewModel.ShoppingLists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                Content="Add Item" />
+
+        </StackPanel>
+
+        <ListView
+            Grid.Row="0"
+            Grid.Column="0"
+            Width="auto"
+            Height="200"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            ItemsSource="{Binding ViewModel.ShoppingLists}">
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Height="20"
+                            MinWidth="450"
+                            MaxWidth="750"
+                            FontSize="16"
+                            Text="{Binding ItemName, StringFormat={} {0}}" />
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Text="{Binding ItemCount, StringFormat={} {0}}" />
+                        <Button
+                            Name="btnEdit"
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Click="btnEdit_Click"
+                            Content="Edit"
+                            FontSize="16" />
+                        <Button
+                            Name="DeleteButton"
+                            Margin="10,0,0,0"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Click="DeleteButton_Click"
+                            Content="Delete"
+                            FontSize="16" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
+
+
+    </Grid>
 
 </ui:UiPage>
